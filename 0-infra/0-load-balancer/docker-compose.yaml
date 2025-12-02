@@ -19,6 +19,8 @@ services:
       - "443:443"
     environment:
       - BASE_DOMAIN=${BASE_DOMAIN}
+    env_file:
+      - .env.traefik
     volumes:
       - ./templates:/etc/traefik/dynamic:row
     networks: [edge]
@@ -28,6 +30,8 @@ services:
     environment:
       BASE_DOMAIN: ${BASE_DOMAIN}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+    env_file:
+      - .env.caddy-infra
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_infra_data:/data
