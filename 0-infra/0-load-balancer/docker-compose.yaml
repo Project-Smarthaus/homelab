@@ -34,7 +34,7 @@ services:
       - caddy_infra_config:/config
     networks:
       reverse-proxy:
-        ipv4_address: 10.69.4.12
+        ipv4_address: 10.0.69.2
       edge: {}
     depends_on:
       - traefik
