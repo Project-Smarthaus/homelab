@@ -13,3 +13,18 @@ http:
   use_x_forwarded_for: true
   trusted_proxies:
     - 10.0.69.10
+
+openid:
+  client_id: !secret openid_client_id
+  client_secret: !secret openid_client_secret
+  configure_url: !secret openid_configure_url
+  username_field: "preferred_username"  # Adjust based on your IdP's user info response
+  scope: "openid profile email"
+  block_login: false
+  trusted_ips: # List of CIDR blocks that are not affected by block_login
+     - "192.168.2.0/24"
+     - "192.168.2.5/32"
+     - "10.0.0.0/8"
+  openid_text: "Login with OpenID / OAuth2"  # Text to display on the login page
+  create_user: true  # Automatically create users on first login
+  
